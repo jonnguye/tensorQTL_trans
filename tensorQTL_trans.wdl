@@ -12,6 +12,7 @@ task tensorqtl_trans {
     Float? fdr
     Boolean return_dense
 
+    String? machineType
     Int memory
     Int disk_space
     Int num_threads
@@ -32,6 +33,7 @@ task tensorqtl_trans {
 
     runtime {
         docker: "gcr.io/broad-cga-francois-gtex/tensorqtl:latest"
+        machineType: "${machineType}"
         memory: "${memory}GB"
         disks: "local-disk ${disk_space} HDD"
         bootDiskSizeGb: 25
